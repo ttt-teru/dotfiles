@@ -18,88 +18,88 @@ local rep = extras.rep
 local postfix = require('luasnip.extras.postfix').postfix
 
 ls.add_snippets('html', {
-  s({
-    trig = 'html:5',
-    name = 'HTML5 Templete',
-    dscr = 'Templates for HTML5',
-  }, {
-    t({
-      '<!DOCTYPE html>',
-      '<html>',
-      '\t<head>',
-      '\t\t<meta charset="utf-8">',
-      '\t\t<meta name="viewport" content="width=device-width, initial-scale=1">',
-      '\t\t<title>',
+    s({
+        trig = 'html:5',
+        name = 'HTML5 Templete',
+        dscr = 'Templates for HTML5',
+    }, {
+        t({
+            '<!DOCTYPE html>',
+            '<html>',
+            '\t<head>',
+            '\t\t<meta charset="utf-8">',
+            '\t\t<meta name="viewport" content="width=device-width, initial-scale=1">',
+            '\t\t<title>',
+        }),
+        i(1, 'Title'),
+        t({ '</title>', '\t</head>', '\t<body>', '\t\t' }),
+        i(0),
+        t({ '', '\t</body>', '</html>' }),
     }),
-    i(1, 'Title'),
-    t({ '</title>', '\t</head>', '\t<body>', '\t\t' }),
-    i(0),
-    t({ '', '\t</body>', '</html>' }),
-  }),
-  s({
-    trig = 'html:react',
-    name = 'HTML React Templete',
-    dscr = 'HTML Template for React',
-  }, {
-    t({
-      '<!DOCTYPE html>',
-      '<html>',
-      '\t<head>',
-      '\t\t<meta charset="utf-8">',
-      '\t\t<meta name="viewport" content="width=device-width, initial-scale=1">',
-      '\t\t<title>',
+    s({
+        trig = 'html:react',
+        name = 'HTML React Templete',
+        dscr = 'HTML Template for React',
+    }, {
+        t({
+            '<!DOCTYPE html>',
+            '<html>',
+            '\t<head>',
+            '\t\t<meta charset="utf-8">',
+            '\t\t<meta name="viewport" content="width=device-width, initial-scale=1">',
+            '\t\t<title>',
+        }),
+        i(1, 'Title'),
+        t({
+            '</title>',
+            '\t</head>',
+            '\t<body>',
+            '\t\t<noscript>You need to enable JavaScript to run this app.</noscript>',
+            '\t\t<div id="root"></div>',
+            '\t\t<script src="',
+        }),
+        i(0, './path'),
+        t({ '"/>', '\t</body>', '</html>' }),
     }),
-    i(1, 'Title'),
-    t({
-      '</title>',
-      '\t</head>',
-      '\t<body>',
-      '\t\t<noscript>You need to enable JavaScript to run this app.</noscript>',
-      '\t\t<div id="root"></div>',
-      '\t\t<script src="',
-    }),
-    i(0, './path'),
-    t({ '"/>', '\t</body>', '</html>' }),
-  }),
 })
 
 ls.add_snippets('json', {
-  s({
-    trig = 'prettier:config',
-    name = 'General config for prettier',
-    dscr = '',
-  }, {
-    t({
-      '{',
-      '\t"arrowParens": "avoid",',
-      '\t"bracketSpacing": true,',
-      '\t"endOfLine": "lf",',
-      '\t"semi": false,',
-      '\t"singleQuote": true,',
-      '\t"tabWidth": 2,',
-      '\t"trailingComma": "none"',
-      '}',
+    s({
+        trig = 'prettier:config',
+        name = 'General config for prettier',
+        dscr = '',
+    }, {
+        t({
+            '{',
+            '\t"arrowParens": "avoid",',
+            '\t"bracketSpacing": true,',
+            '\t"endOfLine": "lf",',
+            '\t"semi": false,',
+            '\t"singleQuote": true,',
+            '\t"tabWidth": 2,',
+            '\t"trailingComma": "none"',
+            '}',
+        }),
     }),
-  }),
-  s({
-    trig = 'eslint:nextjs:config',
-    name = 'General eslint config in Next.js',
-    dscr = '',
-  }, {
-    t({
-      '{',
-      '\t"root": true,',
-      '\t"extends": "next",',
-      '\t"rules": {',
-      '\t\t"no-unused-vars": [',
-      '\t\t\t"error",',
-      '\t\t\t{',
-      '\t\t\t\t"argsIgnorePattern": "^_",',
-      '\t\t\t\t"varsIgnorePattern": "^_"',
-      '\t\t\t}',
-      '\t\t]',
-      '\t}',
-      '}',
+    s({
+        trig = 'eslint:nextjs:config',
+        name = 'General eslint config in Next.js',
+        dscr = '',
+    }, {
+        t({
+            '{',
+            '\t"root": true,',
+            '\t"extends": "next",',
+            '\t"rules": {',
+            '\t\t"no-unused-vars": [',
+            '\t\t\t"error",',
+            '\t\t\t{',
+            '\t\t\t\t"argsIgnorePattern": "^_",',
+            '\t\t\t\t"varsIgnorePattern": "^_"',
+            '\t\t\t}',
+            '\t\t]',
+            '\t}',
+            '}',
+        }),
     }),
-  }),
 })

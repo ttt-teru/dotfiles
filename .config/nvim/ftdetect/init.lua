@@ -1,6 +1,6 @@
 vim.filetype.add({
-  extension = {
-    launch = 'roslaunch',
-    mdx = 'mdx',
-  },
+    extension = {
+        launch = 'roslaunch',
+        mdx = 'mdx',
+    },
 })

@@ -1,5 +1,8 @@
-require('nvim-treesitter.configs').setup({
-  ensure_installed = {
+require('nvim-treesitter').setup({
+    install_dir = vim.fn.stdpath('data') .. '/site',
+})
+
+require('nvim-treesitter').install({
     'bash',
     'c',
     'cmake',
@@ -30,81 +33,45 @@ require('nvim-treesitter.configs').setup({
     'vim',
     'vimdoc',
     'yaml',
-  },
-  sync_install = true,
-  auto_install = true,
-  highlight = {
-    enable = true,
-    disable = {},
-    additional_vim_regex_highlighting = false,
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'gnn', -- set to `false` to disable one of the mappings
-      node_incremental = '.',
-      node_decremental = ',',
-      scope_incremental = 'gic',
-    },
-  },
-  indent = {
-    enable = true,
-  },
-  autotag = {
-    enable = true,
-  },
-  matchup = {
-    enable = true,
-  },
-  context_commenting = {
-    enable = true,
-    enable_autocmd = false,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
-      },
-      selection_modes = {
-        ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
-        ['@class.outer'] = '<c-v>', -- blockwise
-      },
-      include_surrounding_whitespace = false,
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<Leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<Leader>i'] = '@parameter.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']]'] = '@function.outer',
-        [']c'] = { query = '@class.outer', desc = 'Next class start' },
-      },
-      goto_previous_start = {
-        ['[['] = '@function.outer',
-        ['[c'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']}'] = '@function.outer',
-        [']C'] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[{'] = '@function.outer',
-        ['[C'] = '@class.outer',
-      },
-    },
-  },
+})
+
+local ignore_filetypes = {
+    'NvimTree',
+    'TelescopePrompt',
+    'Trouble',
+    'checkhealth',
+    'lazy',
+    'mason',
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('treesitter.setup', {}),
+    callback = function(args)
+        local buf = args.buf
+        local filetype = args.match
+
+        -- you need some mechanism to avoid running on buffers that do not
+        -- correspond to a language (like oil.nvim buffers), this implementation
+        if vim.tbl_contains(ignore_filetypes, filetype) then
+            return
+        end
+
+        -- checks if a parser exists for the current language
+        -- The alternative is "pcall(vim.treesitter.start)"
+        local language = vim.treesitter.language.get_lang(filetype) or filetype
+        if not vim.treesitter.language.add(language) then
+            return
+        end
+
+        -- replicate `fold = { enable = true }`
+        -- vim.wo.foldmethod = 'expr'
+        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
+        -- replicate `highlight = { enable = true }`
+        vim.treesitter.start(buf, language)
+        -- ?additional_vim_regex_highlighting = false,
+
+        -- replicate `indent = { enable = true }`
+        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
 })

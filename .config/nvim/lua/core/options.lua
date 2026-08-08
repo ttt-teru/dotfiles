@@ -1,19 +1,19 @@
 vim.cmd('autocmd!')
 
 vim.cmd([[
-  filetype plugin indent on
+    filetype plugin indent on
 
-  " Other than xterm-256color
-  "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  " undercurl
-  let &t_Cs = "\e[4:3m"
-  let &t_Ce = "\e[4:0m"
+    " Other than xterm-256color
+    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    " undercurl
+    let &t_Cs = "\e[4:3m"
+    let &t_Ce = "\e[4:0m"
 
-  language en_US.UTF-8
-  language message en_US.UTF-8
-  "language ja_JP.UTF-8
-  "language message ja_JP.UTF-8
+    language en_US.UTF-8
+    language message en_US.UTF-8
+    "language ja_JP.UTF-8
+    "language message ja_JP.UTF-8
 ]])
 
 vim.opt.encoding = 'utf-8'
@@ -37,8 +37,8 @@ vim.opt.helpheight = 999
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
 vim.api.nvim_create_autocmd('Filetype', {
-  pattern = '*',
-  command = 'setlocal formatoptions-=ro',
+    pattern = '*',
+    command = 'setlocal formatoptions-=ro',
 })
 vim.g.completeopt = 'menu,menuone,noinsert,noselect'
 vim.o.pumheight = 15
@@ -51,8 +51,8 @@ vim.opt.whichwrap = 'b,s,h,l'
 vim.opt.autoindent = true
 vim.opt.breakindent = true
 vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 0
 
 vim.opt.ignorecase = true

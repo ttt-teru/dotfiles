@@ -28,52 +28,52 @@ local M = {}
 
 local utils = require('heirline.utils')
 local palette = {
-  green = utils.get_highlight('diffAdded').fg,
-  orange = utils.get_highlight('diffNewFile').fg,
+    green = utils.get_highlight('diffAdded').fg,
+    orange = utils.get_highlight('diffNewFile').fg,
 
-  base_fg = utils.get_highlight('StatusLine').fg,
-  base_bg = utils.get_highlight('Normal').bg,
+    base_fg = utils.get_highlight('StatusLine').fg,
+    base_bg = utils.get_highlight('Normal').bg,
 
-  main_fg = utils.get_highlight('StatusLine').fg,
-  main_bg = utils.get_highlight('Visual').bg,
+    main_fg = utils.get_highlight('StatusLine').fg,
+    main_bg = utils.get_highlight('Visual').bg,
 
-  sub_fg = utils.get_highlight('StatusLine').fg,
-  sub_bg = utils.get_highlight('Visual').bg,
+    sub_fg = utils.get_highlight('StatusLine').fg,
+    sub_bg = utils.get_highlight('Visual').bg,
 
-  modifier = utils.get_highlight('Directory').fg,
+    modifier = utils.get_highlight('Directory').fg,
 
-  mode_fg = utils.get_highlight('Normal').bg,
-  mode_bg = utils.get_highlight('Normal').bg, -- separator
-  normal_mode = '#89b4fa',
-  insert_mode = '#a6e3a1',
-  visual_mode = '#cba6f7',
-  replace_mode = '#f38ba8',
-  command_mode = '#fab387',
-  inactive_mode = '#181825',
+    mode_fg = utils.get_highlight('Normal').bg,
+    mode_bg = utils.get_highlight('Normal').bg, -- separator
+    normal_mode = '#89b4fa',
+    insert_mode = '#a6e3a1',
+    visual_mode = '#cba6f7',
+    replace_mode = '#f38ba8',
+    command_mode = '#fab387',
+    inactive_mode = '#181825',
 
-  git_del = utils.get_highlight('diffDeleted').fg,
-  git_add = utils.get_highlight('diffAdded').fg,
-  git_change = utils.get_highlight('diffChanged').fg,
+    git_del = utils.get_highlight('diffDeleted').fg,
+    git_add = utils.get_highlight('diffAdded').fg,
+    git_change = utils.get_highlight('diffChanged').fg,
 
-  -- base_bg
-  diag_warn_fg = utils.get_highlight('Normal').bg,
-  diag_error_fg = utils.get_highlight('Normal').bg,
-  diag_info_fg = utils.get_highlight('Normal').bg,
-  diag_hint_fg = utils.get_highlight('Normal').bg,
+    -- base_bg
+    diag_warn_fg = utils.get_highlight('Normal').bg,
+    diag_error_fg = utils.get_highlight('Normal').bg,
+    diag_info_fg = utils.get_highlight('Normal').bg,
+    diag_hint_fg = utils.get_highlight('Normal').bg,
 
-  diag_warn_bg = utils.get_highlight('DiagnosticWarn').fg,
-  diag_error_bg = utils.get_highlight('DiagnosticError').fg,
-  diag_info_bg = utils.get_highlight('DiagnosticInfo').fg,
-  diag_hint_bg = utils.get_highlight('DiagnosticHint').fg,
+    diag_warn_bg = utils.get_highlight('DiagnosticWarn').fg,
+    diag_error_bg = utils.get_highlight('DiagnosticError').fg,
+    diag_info_bg = utils.get_highlight('DiagnosticInfo').fg,
+    diag_hint_bg = utils.get_highlight('DiagnosticHint').fg,
 
-  winbar_fg = utils.get_highlight('StatusLine').fg,
-  winbar_bg = utils.get_highlight('Normal').bg,
+    winbar_fg = utils.get_highlight('StatusLine').fg,
+    winbar_bg = utils.get_highlight('Normal').bg,
 }
 
 M.set = function()
-  require('heirline').reset_highlights()
-  require('heirline').clear_colors()
-  require('heirline').load_colors(palette)
+    require('heirline').reset_highlights()
+    require('heirline').clear_colors()
+    require('heirline').load_colors(palette)
 end
 
 return M

@@ -1,16 +1,16 @@
 require('trouble').setup({
-  action_keys = {
-    jump = {},
-    jump_close = { '<cr>' },
-    close = { 'q', '<C-f>' },
-  },
-  signs = {
-    error = '',
-    warning = '',
-    information = '',
-    hint = '',
-    other = '',
-  },
+    action_keys = {
+        jump = {},
+        jump_close = { '<cr>' },
+        close = { 'q', '<C-f>' },
+    },
+    signs = {
+        error = '',
+        warning = '',
+        information = '',
+        hint = '',
+        other = '',
+    },
 })
 
 local opt = { silent = true, noremap = true }
