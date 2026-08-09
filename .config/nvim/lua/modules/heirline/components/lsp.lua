@@ -9,17 +9,28 @@ M.Diagnostics = {
 
     condition = conditions.has_diagnostics,
 
+    -- Others symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+    vim.diagnostic.config({
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = '',
+                [vim.diagnostic.severity.WARN] = '',
+                [vim.diagnostic.severity.INFO] = '󰋇',
+                [vim.diagnostic.severity.HINT] = '󰌵',
+            },
+        },
+    }),
+
+    error_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.ERROR],
+    warn_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.WARN],
+    info_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.INFO],
+    hint_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.HINT],
+
     init = function(self)
         self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
         self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
         self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
         self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
-
-        -- Others symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-        self.error_icon = vim.fn.sign_getdefined('DiagnosticSignError')[1].text
-        self.warn_icon = vim.fn.sign_getdefined('DiagnosticSignWarn')[1].text
-        self.info_icon = vim.fn.sign_getdefined('DiagnosticSignInfo')[1].text
-        self.hint_icon = vim.fn.sign_getdefined('DiagnosticSignHint')[1].text
     end,
 
     update = { 'DiagnosticChanged', 'BufEnter' },

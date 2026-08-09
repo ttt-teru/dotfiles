@@ -88,7 +88,7 @@ M.catppuccin = function()
     require('modules.heirline.palette.catppuccin').set()
     require('modules.bufferline').setup({
         separator_style = 'slant',
-        highlights = require('catppuccin.groups.integrations.bufferline').get(),
+        highlights = require('catppuccin.special.bufferline').get_theme(),
     })
     require('lspsaga').setup({
         ui = {
