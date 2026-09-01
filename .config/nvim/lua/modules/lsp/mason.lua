@@ -31,6 +31,7 @@ function config.lspconfig()
             'lua_ls',
             'pyright',
             'rust_analyzer',
+            'tinymist',
             'ts_ls',
         },
     })
@@ -39,10 +40,10 @@ end
 function config.null_ls()
     require('mason-null-ls').setup({
         ensure_installed = {
-            'prettierd',
-            'eslint_d',
-            'stylelint',
             'clang_format',
+            'eslint_d',
+            'prettierd',
+            'stylelint',
             'stylua',
         },
         automatic_installation = true,

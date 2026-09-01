@@ -30,6 +30,7 @@ require('nvim-treesitter').install({
     'toml',
     'tsx',
     'typescript',
+    'typst',
     'vim',
     'vimdoc',
     'yaml',

@@ -22,4 +22,14 @@ null_ls.setup({
     },
 })
 
-vim.keymap.set('n', '==', vim.lsp.buf.format, { noremap = true, silent = true })
+vim.keymap.set(
+    'n',
+    '==',
+    vim.lsp.buf.format({
+        -- async = false,
+        -- filter = function(client)
+        --     return client.name == 'null-ls'
+        -- end,
+    }),
+    { noremap = true, silent = true }
+)

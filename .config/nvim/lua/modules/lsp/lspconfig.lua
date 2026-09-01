@@ -61,17 +61,7 @@ end
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.offsetEncoding = 'utf-8' -- Resolving offset_encoding issues for several different clients (at null-ls)
-
-local function check_os(cmd)
-    local selected_cmd = nil
-    if vim.fn.has('macunix') == 1 then
-        selected_cmd = cmd.macunix
-    elseif vim.fn.has('win32') == 1 then
-        selected_cmd = cmd.win
-    end
-    return selected_cmd
-end
+capabilities.offsetEncoding = { 'utf-8' } -- Resolving offset_encoding issues for several different clients (at null-ls)
 
 local lspconfig = vim.lsp.config
 -- Do not forget to use the on_attach function
@@ -112,7 +102,7 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
             },
         })
     elseif server_name == 'ts_ls' then
-        local cmd = check_os({
+        local cmd = require('utils.by_os')({
             macunix = { 'typescript-language-server', '--stdio' },
             win = { 'typescript-language-server.cmd', '--stdio' },
         })
@@ -148,7 +138,7 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
             },
         })
     elseif server_name == 'clangd' then
-        -- local query_driver = check_os({
+        -- local query_driver = require('utils.by_os')({
         --   macunix = '/usr/bin/clang++,/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
         --   win = '$HOME\\scoop\\apps\\gcc\\current\\bin\\g++.exe,$HOME\\scoop\\apps\\mingw\\current\\bin\\g++.exe',
         -- })
@@ -168,6 +158,24 @@ for _, server_name in ipairs(require('mason-lspconfig').get_installed_servers())
                 '--header-insertion-decorators',
                 '--header-insertion=iwyu',
                 '--enable-config',
+            },
+        })
+    elseif server_name == 'tinymist' then
+        lspconfig('tinymist', {
+            root_dir = function()
+                return vim.fn.getcwd()
+            end,
+            handlers = handlers,
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                formatterMode = 'typstyle',
+                formatterProseWrap = true, -- wrap lines in content mode
+                formatterPrintWidth = 120, -- limit line length to 80 if possible
+                formatterIndentSize = 4, -- indentation width
+                exportPdf = 'never',
+                semanticTokens = 'disable',
+                -- outputPath = '$root/target/$dir/$name',
             },
         })
     elseif server_name ~= 'rust_analyzer' then

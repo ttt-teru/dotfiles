@@ -16,26 +16,32 @@ vim.cmd([[
     "language message ja_JP.UTF-8
 ]])
 
-vim.opt.encoding = 'utf-8'
-vim.opt.fileformats = { 'unix', 'mac', 'dos' }
-vim.opt.fileencodings = { 'utf-8', 'iso-2022-jp', 'euc-jp', 'sjis' }
-vim.opt.mouse = ''
+local opt = vim.opt
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.title = true
-vim.opt.showmode = false
-vim.opt.showmatch = true
-vim.opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
-vim.opt.backspace = { 'indent', 'eol', 'start' }
-vim.opt.splitright = true
-vim.opt.updatetime = 100
-vim.opt.termguicolors = true
-vim.opt.hidden = true
-vim.opt.showtabline = 2
-vim.opt.helpheight = 999
-vim.opt.scrolloff = 5
-vim.opt.sidescrolloff = 5
+opt.synmaxcol = 300 -- Syntax highlighting limit
+opt.updatetime = 300 -- Faster completion
+opt.redrawtime = 10000
+opt.maxmempattern = 20000
+
+opt.encoding = 'utf-8'
+opt.fileformats = { 'unix', 'mac', 'dos' }
+opt.fileencodings = { 'utf-8', 'iso-2022-jp', 'euc-jp', 'sjis' }
+opt.mouse = ''
+
+opt.number = true
+opt.relativenumber = true
+opt.title = true
+opt.showmode = false
+opt.showmatch = true
+opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
+opt.backspace = { 'indent', 'eol', 'start' }
+opt.splitright = true
+opt.termguicolors = true
+opt.hidden = true
+opt.showtabline = 2
+opt.helpheight = 999
+opt.scrolloff = 5
+opt.sidescrolloff = 5
 vim.api.nvim_create_autocmd('Filetype', {
     pattern = '*',
     command = 'setlocal formatoptions-=ro',
@@ -47,15 +53,15 @@ vim.o.laststatus = 3
 vim.o.signcolumn = 'yes'
 
 --vim.o.showbreak='↪'
-vim.opt.whichwrap = 'b,s,h,l'
-vim.opt.autoindent = true
-vim.opt.breakindent = true
-vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 0
+opt.whichwrap = 'b,s,h,l'
+opt.autoindent = true
+opt.breakindent = true
+opt.expandtab = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 0
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.wrapscan = true
-vim.opt.hlsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.wrapscan = true
+opt.hlsearch = true

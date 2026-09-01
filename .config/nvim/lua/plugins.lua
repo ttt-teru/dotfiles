@@ -521,6 +521,23 @@ return {
     },
 
     {
+        'chomosuke/typst-preview.nvim',
+        ft = 'typst',
+        version = '1.*',
+        config = function()
+            local opt = require('utils.by_os')({
+                macunix = 'tinymist',
+                win = 'tinymist.cmd',
+            })
+            require('typst-preview').setup({
+                dependencies_bin = {
+                    tinymist = opt,
+                },
+            })
+        end,
+    },
+
+    {
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
     },
