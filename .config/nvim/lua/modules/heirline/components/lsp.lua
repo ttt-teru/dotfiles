@@ -4,27 +4,26 @@ local conditions = require('heirline.conditions')
 
 local delimiters = require('modules.heirline.components.delimiter')
 
+M.LSPActive = {
+    condition = conditions.lsp_attached,
+    update = { 'LspAttach', 'LspDetach' },
+
+    provider = ' [LSP]',
+
+    hl = { fg = 'green', bold = true },
+}
+
 ---Return the LspDiagnostics from the LSP servers
 M.Diagnostics = {
 
     condition = conditions.has_diagnostics,
 
-    -- Others symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-    vim.diagnostic.config({
-        signs = {
-            text = {
-                [vim.diagnostic.severity.ERROR] = '',
-                [vim.diagnostic.severity.WARN] = '',
-                [vim.diagnostic.severity.INFO] = '󰋇',
-                [vim.diagnostic.severity.HINT] = '󰌵',
-            },
-        },
-    }),
-
-    error_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.ERROR],
-    warn_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.WARN],
-    info_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.INFO],
-    hint_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.HINT],
+    static = {
+        error_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.ERROR],
+        warn_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.WARN],
+        info_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.INFO],
+        hint_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.HINT],
+    },
 
     init = function(self)
         self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })

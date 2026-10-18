@@ -52,6 +52,7 @@ local StatusLine = {
     delimiters.Align,
 
     lsp.Diagnostics,
+    lsp.LSPActive,
     {
         hl = { reverse = true },
         delimiters.RightMiddleSeparator,

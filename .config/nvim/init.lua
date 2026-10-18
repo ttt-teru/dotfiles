@@ -76,6 +76,7 @@ disable_distribution_plugins()
 
 require('core.options')
 require('core.mappings')
+require('core.lsp')
 require('lazy').setup('plugins', {
     defaults = { lazy = true },
     lockfile = vim.fn.stdpath('data') .. '/site/lazy/lazy-lock.json',

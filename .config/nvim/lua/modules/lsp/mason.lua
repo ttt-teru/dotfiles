@@ -15,6 +15,7 @@ end
 
 function config.lspconfig()
     require('mason-lspconfig').setup({
+        automatic_enable = true,
         ensure_installed = {
             'bashls',
             'clangd',

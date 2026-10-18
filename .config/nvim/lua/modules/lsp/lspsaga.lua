@@ -24,7 +24,7 @@ require('lspsaga').setup({
         virtual_text = false,
     },
     diagnostic = {
-        kyes = {
+        keys = {
             quit_in_show = { 'q', '<Esc>', '<C-f>' },
         },
     },

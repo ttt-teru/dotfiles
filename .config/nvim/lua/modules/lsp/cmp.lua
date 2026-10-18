@@ -80,9 +80,14 @@ cmp.setup({
     },
     window = {
         completion = {
+            border = 'none',
             winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+            -- winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
             col_offset = -2,
             side_padding = 0,
+        },
+        documentation = {
+            border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
         },
     },
 })

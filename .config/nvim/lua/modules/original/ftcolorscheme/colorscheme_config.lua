@@ -62,7 +62,7 @@ M.nord = function()
     require('nord').set()
     require('utils.highlight').set_hl(table.merge(common_hl, {
         MatchParen = { bg = '#434C5E', bold = true },
-        Comment = { fg = '#616e88', cterm = italic, italic = true },
+        Comment = { fg = '#616e88', cterm = { italic = true }, italic = true },
     }))
     require('modules.heirline.palette.nord').set()
     require('modules.bufferline').setup({

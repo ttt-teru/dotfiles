@@ -46,13 +46,14 @@ vim.api.nvim_create_autocmd('Filetype', {
     pattern = '*',
     command = 'setlocal formatoptions-=ro',
 })
-vim.g.completeopt = 'menu,menuone,noinsert,noselect'
-vim.o.pumheight = 15
-vim.o.cmdheight = 0
-vim.o.laststatus = 3
-vim.o.signcolumn = 'yes'
+opt.completeopt = 'menu,menuone,noinsert,noselect'
+opt.pumheight = 15
+opt.cmdheight = 0
+opt.laststatus = 3
+opt.signcolumn = 'yes'
+opt.winborder = 'rounded'
 
---vim.o.showbreak='↪'
+-- opt.showbreak='↪'
 opt.whichwrap = 'b,s,h,l'
 opt.autoindent = true
 opt.breakindent = true

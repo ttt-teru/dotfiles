@@ -167,7 +167,9 @@ return {
     {
         'ray-x/lsp_signature.nvim',
         event = 'InsertEnter',
-        opts = {},
+        config = function()
+            require('modules.lsp.lsp_signature')
+        end,
     },
 
     {
@@ -185,6 +187,28 @@ return {
         event = 'LspAttach',
         config = function()
             require('modules.lsp.null-ls')
+        end,
+    },
+    {
+        'stevearc/conform.nvim',
+        dependencies = {
+            'mason-org/mason.nvim',
+        },
+        event = { 'BufWritePre' },
+        cmd = { 'ConformInfo' },
+        keys = {
+            {
+                -- Customize or remove this keymap to your liking
+                '==',
+                function()
+                    require('modules.conform').format()
+                end,
+                mode = '',
+                desc = 'Format buffer',
+            },
+        },
+        config = function()
+            require('modules.conform')
         end,
     },
 
@@ -223,11 +247,11 @@ return {
         },
     },
 
-    {
-        'mrcjkb/rustaceanvim',
-        version = '^9',
-        lazy = false,
-    },
+    -- {
+    --     'mrcjkb/rustaceanvim',
+    --     version = '^9',
+    --     lazy = false,
+    -- },
     {
         'timtro/glslView-nvim',
         ft = 'glsl',
